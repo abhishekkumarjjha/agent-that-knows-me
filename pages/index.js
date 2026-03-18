@@ -401,7 +401,12 @@ export default function Home() {
                       color:      m.role === 'user' ? '#93c5fd'       : C.text,
                       border:     `1px solid ${m.role === 'user' ? C.accent + '44' : C.border}`,
                     }}>
-                      {m.content}
+                      {m.content.split('\n').map((line, i) => (
+  <span key={i}>
+    {line}
+    {i < m.content.split('\n').length - 1 && <br />}
+  </span>
+))}
                     </div>
                   </div>
                 ))}
