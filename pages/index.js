@@ -134,7 +134,13 @@ export default function Home() {
   const bottomRef = useRef(null);
 
   useEffect(() => { setTimeout(() => setVisible(true), 80); }, []);
-  useEffect(() => { bottomRef.current?.scrollIntoView({ behavior: 'smooth' }); }, [messages, loading]);
+
+  useEffect(() => {
+  if (messages.length > 1) {
+    bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }
+}, [messages, loading]);
+  
 
   // ── fade-in helper ──────────────────────────────────────
   const fi = (delay) => ({
